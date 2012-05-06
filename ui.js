@@ -3,7 +3,9 @@
 
 $(document).ready(function() {
 	var canvas = document.getElementById('canvas');
-    var controller = new FlockController(canvas);
+    var controller = new FlockController(canvas, {
+      parallel: document.getElementById('parallel')
+    });
 
     canvas.addEventListener('mousemove', function(e) {
         var offsetX = e.offsetX;

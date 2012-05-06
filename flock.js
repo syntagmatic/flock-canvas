@@ -39,16 +39,27 @@ function FlockController(canvas, options) {
 
   var ctx = canvas.getContext('2d');
 
+  if (options.parallel) {
+    var pll = options.parallel.getContext('2d');
+  }
+
   var drawBoid = function(boid) {
     ctx.fillRect(boid.x, boid.y, 2, 2);
 
-    if (settings && settings.directionVectorStyle) {
-      ctx.strokeStyle = settings.directionVectorStyle;
-      ctx.beginPath();
-      ctx.moveTo(boid.x, boid.y);
-      ctx.lineTo(boid.x + boid.vx * 10, boid.y + boid.vy * 10);
-      ctx.stroke();
-    }
+    // velocity vector
+    ctx.strokeStyle = "rgba(0,225,0,0.4)";
+    ctx.beginPath();
+    ctx.moveTo(boid.x, boid.y);
+    ctx.lineTo(boid.x + boid.vx * 10, boid.y + boid.vy * 10);
+    ctx.stroke();
+
+    // parallel coordinates
+    pll.beginPath();
+    pll.moveTo(100,190-(boid.x/canvas.width*190))
+    pll.lineTo(300,boid.y/canvas.height*190)
+    pll.moveTo(400,190-(25*boid.vx+95))
+    pll.lineTo(600,25*boid.vy+95)
+    pll.stroke();
   }
 
   var getVisualStats = function(boid) {
@@ -91,6 +102,9 @@ function FlockController(canvas, options) {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    pll.fillStyle = 'white';
+    pll.fillRect(0, 0, 690, 190);
+
         ctx.fillStyle = '#f9f9f9';
         ctx.beginPath();
         ctx.arc(targetX, targetY, 50, 0, Math.PI * 2, true);
@@ -98,6 +112,33 @@ function FlockController(canvas, options) {
 
     // Draw the boids!
     ctx.fillStyle = 'black';
+
+    // parallel marks
+    // velocity
+    pll.strokeStyle = 'rgba(200,0,0,0.5)';
+    pll.fillStyle= 'rgba(200,0,0,0.5)';
+    pll.font = 'bold 12px sans-serif';
+    pll.beginPath()
+    pll.moveTo(400,95)
+    pll.lineTo(600,95)
+    pll.stroke();
+    // labels
+    pll.fillText('x',100,180)
+    pll.fillText('y',300,180)
+    pll.fillText('vx',400,180)
+    pll.fillText('vy',600,180)
+    pll.stroke();
+    // target
+    pll.strokeStyle = 'rgba(0,100,200,0.5)';
+    pll.lineWidth = 4;
+    pll.beginPath();
+    pll.moveTo(100,190-(targetX/canvas.width*190))
+    pll.lineTo(300,targetY/canvas.height*190)
+    pll.stroke();
+
+    pll.strokeStyle = 'rgba(0,0,0,0.5)';
+    pll.lineWidth= 1;
+    pll.beginPath();
     for (var i in boids)
       drawBoid(boids[i]);
 
