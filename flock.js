@@ -105,10 +105,10 @@ function FlockController(canvas, options) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     pll.globalCompositeOperation = "source-over";
-    pll.fillStyle = 'rgba(255,255,255,0.2)';
+    pll.fillStyle = 'rgba(255,255,255,0.12)';
     pll.fillRect(0, 0, 690, 190);
 
-        ctx.fillStyle = 'rgba(0,100,200,0.1)';
+        ctx.fillStyle = 'rgba(0,100,200,0.03)';
         ctx.beginPath();
         ctx.arc(targetX, targetY, 30, 0, Math.PI * 2, true);
         ctx.fill();
