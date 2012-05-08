@@ -21,9 +21,9 @@ $(document).ready(function() {
     $('#numBoids').slider({
         range: 'min',
         value: 30,
-        min: 5,
+        min: 2,
         max: 100,
-        step: 5,
+        step: 2,
         slide: function(e, ui) { $('#numBoidsValue').text(ui.value); controller.updateOptions({numBoids: ui.value}); }
     });
     

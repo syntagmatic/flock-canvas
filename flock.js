@@ -101,10 +101,11 @@ function FlockController(canvas, options) {
   }
 
   this.animateFrame = function() {
-    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    pll.fillStyle = 'rgba(255,255,255,0.1)';
+    pll.globalCompositeOperation = "source-over";
+    pll.fillStyle = 'rgba(255,255,255,0.2)';
     pll.fillRect(0, 0, 690, 190);
 
         ctx.fillStyle = 'rgba(0,100,200,0.1)';
@@ -117,7 +118,7 @@ function FlockController(canvas, options) {
 
     // parallel marks
     // velocity
-    pll.strokeStyle = 'rgba(200,0,0,0.5)';
+    pll.strokeStyle = 'rgba(200,0,0,0.01)';
     pll.fillStyle= 'rgba(200,0,0,0.5)';
     pll.font = 'bold 12px sans-serif';
     pll.beginPath()
@@ -131,16 +132,16 @@ function FlockController(canvas, options) {
     pll.fillText('vy',600,180)
     pll.stroke();
     // target
-    pll.strokeStyle = 'rgba(0,100,200,0.5)';
+    pll.strokeStyle = 'rgba(0,100,200,0.1)';
     pll.lineWidth = 4;
     pll.beginPath();
     pll.moveTo(100,190-(targetX/canvas.width*190))
     pll.lineTo(300,targetY/canvas.height*190)
     pll.stroke();
 
-    pll.strokeStyle = 'rgba(0,0,0,0.5)';
+    pll.strokeStyle = 'rgba(0,0,0,0.2)';
     pll.lineWidth= 1;
-    pll.beginPath();
+    pll.globalCompositeOperation = "darker";
     for (var i in boids)
       drawBoid(boids[i]);
 
