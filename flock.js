@@ -44,21 +44,23 @@ function FlockController(canvas, options) {
   }
 
   var drawBoid = function(boid) {
-    ctx.fillRect(boid.x, boid.y, 2, 2);
+    ctx.fillRect(boid.x, boid.y, 2.5, 2.5);
 
     // velocity vector
+    /*
     ctx.strokeStyle = "rgba(0,225,0,0.4)";
     ctx.beginPath();
     ctx.moveTo(boid.x, boid.y);
     ctx.lineTo(boid.x + boid.vx * 10, boid.y + boid.vy * 10);
     ctx.stroke();
+    */
 
     // parallel coordinates
     pll.beginPath();
     pll.moveTo(100,190-(boid.x/canvas.width*190))
     pll.lineTo(300,boid.y/canvas.height*190)
-    pll.moveTo(400,190-(25*boid.vx+95))
-    pll.lineTo(600,25*boid.vy+95)
+    pll.moveTo(400,190-(50*boid.vx+95))
+    pll.lineTo(600,50*boid.vy+95)
     pll.stroke();
   }
 
@@ -99,15 +101,15 @@ function FlockController(canvas, options) {
   }
 
   this.animateFrame = function() {
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    pll.fillStyle = 'white';
+    pll.fillStyle = 'rgba(255,255,255,0.1)';
     pll.fillRect(0, 0, 690, 190);
 
-        ctx.fillStyle = '#f9f9f9';
+        ctx.fillStyle = 'rgba(0,100,200,0.1)';
         ctx.beginPath();
-        ctx.arc(targetX, targetY, 50, 0, Math.PI * 2, true);
+        ctx.arc(targetX, targetY, 30, 0, Math.PI * 2, true);
         ctx.fill();
 
     // Draw the boids!
@@ -194,7 +196,7 @@ function FlockController(canvas, options) {
       // Steer towards the target.
       var dx = targetX - boid.x;
       var dy = targetY - boid.y;
-      var distance = Math.max(Math.sqrt(dx * dx + dy * dy), 50);
+      var distance = Math.max(Math.sqrt(dx * dx + dy * dy), 30);
       var ndx = dx / distance;
       var ndy = dy / distance;
       tx += ndx * settings.targetPriority;
