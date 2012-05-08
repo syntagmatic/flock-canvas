@@ -45,7 +45,7 @@ function FlockController(canvas, options) {
   }
 
   var drawBoid = function(boid) {
-    ctx.fillRect(boid.x, boid.y, boid.z/100, boid.z/100);
+    ctx.fillRect(boid.x, boid.y, boid.z/40, boid.z/40);
 
     // velocity vector
     /*
@@ -170,6 +170,12 @@ function FlockController(canvas, options) {
         }
         if (boid.y > canvas.height) {
           boid.y -= canvas.height;
+        }
+        if (boid.z < 0) {
+          boid.z += canvas.height;
+        }
+        if (boid.z > canvas.height) {
+          boid.z -= canvas.height;
         }
       }
 
