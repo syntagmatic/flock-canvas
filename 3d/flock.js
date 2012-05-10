@@ -45,7 +45,11 @@ function FlockController(canvas, options) {
   }
 
   var drawBoid = function(boid) {
-    ctx.fillRect(boid.x, boid.y, boid.z/40, boid.z/40);
+    var color = 'hsl(' + Math.round(360*boid.z/canvas.height) + ',50%,50%)';
+    ctx.fillStyle = color;
+    pll.strokeStyle = color;
+
+    ctx.fillRect(boid.x, boid.y, 4, 4);
 
     // velocity vector
     /*
@@ -121,9 +125,6 @@ function FlockController(canvas, options) {
         ctx.arc(targetX, targetY, 30, 0, Math.PI * 2, true);
         ctx.fill();
 
-    // Draw the boids!
-    ctx.fillStyle = 'black';
-
     // parallel marks
     // velocity
     pll.strokeStyle = 'rgba(200,0,0,0.01)';
@@ -150,6 +151,8 @@ function FlockController(canvas, options) {
     pll.strokeStyle = 'rgba(0,0,0,0.2)';
     pll.lineWidth= 1;
     pll.globalCompositeOperation = "darker";
+
+    // Draw the boids!
     for (var i in boids)
       drawBoid(boids[i]);
 
