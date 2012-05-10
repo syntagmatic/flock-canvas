@@ -145,7 +145,7 @@ function FlockController(canvas, options) {
     pll.lineWidth = 4;
     pll.beginPath();
     pll.moveTo(0,190-(targetX/canvas.width*190))
-    pll.lineTo(200,targetY/canvas.height*190)
+    pll.lineTo(345,targetY/canvas.height*190)
     pll.stroke();
 
     pll.strokeStyle = 'rgba(0,0,0,0.2)';
