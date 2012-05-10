@@ -127,18 +127,15 @@ function FlockController(canvas, options) {
 
     // parallel marks
     // velocity
-    pll.strokeStyle = 'rgba(200,0,0,0.01)';
-    pll.fillStyle= 'rgba(200,0,0,0.5)';
+    pll.fillStyle= 'rgba(0,0,0,0.2)';
     pll.font = 'bold 12px sans-serif';
-    pll.beginPath()
-    pll.moveTo(0,300)
-    pll.lineTo(20,300)
-    pll.stroke();
     // labels
     pll.fillText('x',000,180)
     pll.fillText('y',345,180)
+    pll.fillText('hue',660,180)
     pll.fillText('vx',0,380)
     pll.fillText('vy',345,380)
+    pll.fillText('vhue',660,380)
     pll.stroke();
     // target
     pll.strokeStyle = 'rgba(0,100,200,0.1)';
