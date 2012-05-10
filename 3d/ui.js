@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     $('#numBoids').slider({
         range: 'min',
-        value: 30,
+        value: 42,
         min: 2,
         max: 200,
         step: 2,
@@ -74,7 +74,7 @@ $(document).ready(function() {
 
     $('#targetPriority').slider({
         range: 'min',
-        value: 3,
+        value: 2,
         min: 0,
         max: 5,
         step: 1,

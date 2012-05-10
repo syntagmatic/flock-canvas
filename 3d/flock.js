@@ -15,11 +15,11 @@ function FlockController(canvas, options) {
     maxRotation: 30 * Math.PI / 180,
     minSpeed: 3,
     maxSpeed: 5,
-    numBoids: 30,
+    numBoids: 42,
     rotationSpeed: 0.2,
     separationDistance: 20,
     separationPriority: 5,
-    targetPriority: 3,
+    targetPriority: 2,
     torus: true,
     visualField: Math.PI * 270 / 180,
     visualRange: 50,
@@ -63,11 +63,11 @@ function FlockController(canvas, options) {
     // parallel coordinates
     pll.beginPath();
     pll.moveTo(000,190-(boid.x/canvas.width*190))
-    pll.lineTo(200,boid.y/canvas.height*190)
-    pll.lineTo(400,boid.z/canvas.height*190)
+    pll.lineTo(345,boid.y/canvas.height*190)
+    pll.lineTo(690,boid.z/canvas.height*190)
     pll.moveTo(0,400-(50*boid.vx+95))
-    pll.lineTo(200,400-(50*boid.vy+95))
-    pll.lineTo(400,400-(50*boid.vz+95))
+    pll.lineTo(345,400-(50*boid.vy+95))
+    pll.lineTo(690,400-(50*boid.vz+95))
     pll.stroke();
   }
 
@@ -136,9 +136,9 @@ function FlockController(canvas, options) {
     pll.stroke();
     // labels
     pll.fillText('x',000,180)
-    pll.fillText('y',200,180)
+    pll.fillText('y',345,180)
     pll.fillText('vx',0,380)
-    pll.fillText('vy',400,380)
+    pll.fillText('vy',345,380)
     pll.stroke();
     // target
     pll.strokeStyle = 'rgba(0,100,200,0.1)';
