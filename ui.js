@@ -22,7 +22,7 @@ $(document).ready(function() {
         range: 'min',
         value: 30,
         min: 2,
-        max: 200,
+        max: 400,
         step: 2,
         slide: function(e, ui) { $('#numBoidsValue').text(ui.value); controller.updateOptions({numBoids: ui.value}); }
     });
